@@ -1,0 +1,171 @@
+:root {
+  --bg: #eef0ea;
+  --ink: #1f2e2c;
+  --ink-soft: #4a5754;
+  --accent: #a9647a;
+  --accent-line: #c9a24a;
+  --card-bg: #ffffff;
+  --card-border: #dde2d9;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.wrap {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 8vh 8vw;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  animation: rise 0.9s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content { animation: none; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.org {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+}
+
+.clinic-name {
+  margin: 0;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.rule {
+  width: 64px;
+  height: 3px;
+  background: var(--accent-line);
+  margin: 28px 0 26px;
+  border-radius: 2px;
+}
+
+.lead {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 0 0 18px;
+  line-height: 1.8;
+}
+
+.body {
+  font-size: 0.98rem;
+  line-height: 2;
+  color: var(--ink-soft);
+  margin: 0 0 36px;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 22px 26px;
+}
+
+.info-title {
+  margin: 0 0 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.info-line {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.info-label {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  border: 1px solid var(--card-border);
+  border-radius: 2px;
+  padding: 1px 8px;
+}
+
+.info-line a {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.info-line a:focus-visible,
+.info-line a:hover {
+  color: var(--accent);
+}
+
+.info-note {
+  margin: 14px 0 0;
+  font-size: 0.78rem;
+  color: #8b9490;
+}
+
+.bloom {
+  position: absolute;
+  right: -8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(56vw, 640px);
+  height: auto;
+  opacity: 0.55;
+  z-index: 1;
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    padding: 10vh 7vw;
+    align-items: flex-start;
+  }
+  .bloom {
+    right: -22%;
+    top: auto;
+    bottom: -12%;
+    transform: none;
+    width: 78vw;
+    opacity: 0.4;
+  }
+  .info-line {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
